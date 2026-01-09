@@ -1,0 +1,3 @@
+[submodule "ros2_tracing"]
+	path = ros2_tracing
+	url = git@github.com:RaphvK/ros2_tracing.git
