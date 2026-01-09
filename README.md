@@ -12,7 +12,7 @@
 2. Install required ROS dependencies and build the packages in a ROS workspace, e.g. in a Docker container:
 
     ```bash
-    docker run --rm -it -v $(pwd):/workspace/src ros:jazzy
+    docker run --rm -it -v $(pwd):/workspaces/src ros:jazzy
     ```
 
 3. Execute the following command in the Docker container to setup the ROS workspace:
@@ -20,18 +20,19 @@
     ```bash
     # install dependencies
     apt update && rosdep update
-    cd /workspace
+    cd /workspaces
     rosdep install -i --from-paths src -y
 
     # build and source the ROS packages
+    source /opt/ros/jazzy/setup.bash
     colcon build
     source install/setup.bash
     ```
 
-4. Run the nodes to produce trace data, which will be stored in th emounted folder `/workspace/src/traces`:
+4. Run the nodes to produce trace data, which will be stored in th emounted folder `/workspaces/src/traces`:
 
     ```bash
-    ros2 launch test_publisher test_publisher_launch.py trace_path:=/workspace/src/traces
+    ros2 launch test_publisher test_publisher_launch.py trace_path:=/workspaces/src/traces
     # wait for a few mesages being received and sent before stopping the nodes with CTRL-C
     ```
 
