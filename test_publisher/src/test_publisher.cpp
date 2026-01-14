@@ -30,7 +30,7 @@ void TestPublisher::setup() {
   link_subs.push_back(static_cast<const void *>(subscriber_->get_subscription_handle().get()));
   link_subs.push_back(static_cast<const void *>(subscriber2_->get_subscription_handle().get()));
   link_pubs.push_back(static_cast<const void *>(publisher_->get_publisher_handle().get()));
-  TRACEPOINT(message_link_partial_sync, link_subs.data(), link_subs.size(), link_pubs.data(), link_pubs.size());
+  TRACETOOLS_TRACEPOINT(message_link_partial_sync, link_subs.data(), link_subs.size(), link_pubs.data(), link_pubs.size());
 }
 
 
