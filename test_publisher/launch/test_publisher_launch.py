@@ -56,8 +56,8 @@ def generate_launch_description():
         ),
         Trace(
             session_name='trace',
-            append_timestamp=True,
             base_path=LaunchConfiguration("trace_path"),
+            snapshot_mode=True,
             condition=IfCondition(LaunchConfiguration("trace")),
         ),
     ]

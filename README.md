@@ -33,8 +33,16 @@
 
     ```bash
     ros2 launch test_publisher test_publisher_launch.py trace_path:=/workspaces/src/traces
-    # wait for a few mesages being received and sent before stopping the nodes with CTRL-C
     ```
+
+    Once the node is running, start recording a snapshot with:
+
+    ```bash
+    ros2 trace record_snapshot trace
+    # wait for a few messages being sent and received and stop tracing afterwards
+    ros2 trace stop trace
+    ```
+
 
 5. On your host, install and start [Eclipse Trace Compass (with Incubator plugins)](https://eclipse.dev/tracecompass/)
 
