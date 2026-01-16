@@ -1,9 +1,9 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-	"name": "ROS 2 Jazzy",
+	"name": "ROS 2 Rolling",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "ros:jazzy",
+	"image": "ros:rolling",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/src,type=bind",
 	"workspaceFolder": "/workspaces/src"
 	// Features to add to the dev container. More info: https://containers.dev/features.

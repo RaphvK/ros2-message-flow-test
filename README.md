@@ -1,6 +1,6 @@
 # Trace complex N-to-M ROS 2 message flows with Eclipse Trace Compass
 
->This work is based on https://github.com/christophebedard/ros2-message-flow-analysis and was updated to ROS 2 jazzy. The purpose of this repository is to easily demonstrate the function of the corresponding Pull Request in [ros2_tracing](github.com/ros2/ros2_tracing).
+>This work is based on https://github.com/christophebedard/ros2-message-flow-analysis and was updated to ROS 2 Rolling. The purpose of this repository is to easily demonstrate the function of the corresponding Pull Request in [ros2_tracing](github.com/ros2/ros2_tracing).
 
 1. Clone this repository recursively and check out the branch with modifications for message flow tracing:
 
@@ -12,7 +12,7 @@
 2. Install required ROS dependencies and build the packages in a ROS workspace, e.g. in a Docker container:
 
     ```bash
-    docker run --rm -it -v $(pwd):/workspaces/src ros:jazzy
+    docker run --rm -it -v $(pwd):/workspaces/src ros:rolling
     ```
 
 3. Execute the following command in the Docker container to setup the ROS workspace:
@@ -24,7 +24,7 @@
     rosdep install -i --from-paths src -y
 
     # build and source the ROS packages
-    source /opt/ros/jazzy/setup.bash
+    source /opt/ros/rolling/setup.bash
     colcon build
     source install/setup.bash
     ```
