@@ -32,7 +32,8 @@
 4. Run the nodes to produce trace data, which will be stored in th emounted folder `/workspaces/src/traces`:
 
     ```bash
-    ros2 launch test_publisher test_publisher_launch.py trace_path:=/workspaces/src/traces
+    export ROS_TRACE_DIR=/workspaces/src/traces
+    ros2 launch test_publisher test_publisher_launch.py
     # wait for a few mesages being received and sent before stopping the nodes with CTRL-C
     ```
 

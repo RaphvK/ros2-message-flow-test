@@ -55,7 +55,7 @@ def generate_launch_description():
         ),
         Trace(
             session_name='trace',
-            append_timestamp=True,
+            dual_session=True,
             condition=IfCondition(LaunchConfiguration("trace")),
         ),
     ]
