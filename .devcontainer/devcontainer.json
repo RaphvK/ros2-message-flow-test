@@ -5,7 +5,7 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "ros:jazzy",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/src,type=bind",
-	"workspaceFolder": "/workspaces/src"
+	"workspaceFolder": "/workspaces/src",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
@@ -13,7 +13,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "apt update && rosdep update && rosdep install -i --from-paths /workspaces/src -y",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
