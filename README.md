@@ -29,10 +29,10 @@
     source install/setup.bash
     ```
 
-4. Run the nodes to produce trace data, which will be stored in th emounted folder `/workspaces/src/traces`:
+4. Run the nodes to produce trace data:
 
     ```bash
-    ros2 launch test_publisher test_publisher_launch.py trace_path:=/workspaces/src/traces
+    ros2 launch test_publisher test_publisher_launch.py
     ```
 
     Once the node is running, start recording a snapshot with:
@@ -41,6 +41,12 @@
     ros2 trace record_snapshot trace
     # wait for a few messages being sent and received and stop tracing afterwards
     ros2 trace stop trace
+    ```
+
+    Move recorded trace data into mounted folder:
+
+    ```bash
+    mv ~/.ros/tracing /workspaces/src/traces/
     ```
 
 

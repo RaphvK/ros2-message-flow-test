@@ -20,7 +20,6 @@ def generate_launch_description():
         DeclareLaunchArgument("log_level", default_value="info", description="ROS logging level (debug, info, warn, error, fatal)"),
         DeclareLaunchArgument("use_sim_time", default_value="false", description="use simulation clock"),
         DeclareLaunchArgument("trace", default_value="true", description="enable tracing"),
-        DeclareLaunchArgument("trace_path", default_value=os.path.join(os.getcwd(), "traces"), description="path to save trace files"),
         DeclareLaunchArgument("input_topic", default_value="input_topic", description="topic to subscribe to"),
         DeclareLaunchArgument("input_topic2", default_value="input_topic2", description="second topic to subscribe to"),
         DeclareLaunchArgument("output_topic", default_value="~/output", description="topic to publish to"),
@@ -56,8 +55,7 @@ def generate_launch_description():
         ),
         Trace(
             session_name='trace',
-            base_path=LaunchConfiguration("trace_path"),
-            snapshot_mode=True,
+            dual_session=True,
             condition=IfCondition(LaunchConfiguration("trace")),
         ),
     ]
