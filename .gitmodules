@@ -4,3 +4,6 @@
 [submodule "tracetools_analysis"]
 	path = tracetools_analysis
 	url = https://github.com/RaphvK/tracetools_analysis.git
+[submodule "rmw_zenoh"]
+	path = rmw_zenoh
+	url = https://github.com/RaphvK/rmw_zenoh.git
