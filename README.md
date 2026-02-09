@@ -2,11 +2,10 @@
 
 >This work is based on https://github.com/christophebedard/ros2-message-flow-analysis and was updated to ROS 2 jazzy. The purpose of this repository is to easily demonstrate the function of the corresponding Pull Request in [ros2_tracing](github.com/ros2/ros2_tracing).
 
-1. Clone this repository recursively and check out the branch with modifications for message flow tracing:
+1. Clone this repository recursively:
 
     ```bash
     git clone --recursive https://github.com/RaphvK/ros2_tracing.git
-    cd ros2_tracing && git checkout message-flow
     ```
 
 2. Install required ROS dependencies and build the packages in a ROS workspace, e.g. in a Docker container:
@@ -23,8 +22,14 @@
     cd /workspaces
     rosdep install -i --from-paths src -y
 
-    # build and source the ROS packages
+    # make sure to use the zenoh middleware implementation
+    export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+
+    # build the rmw_zenoh_cpp package first
     source /opt/ros/jazzy/setup.bash
+    colcon build --packages-up-to rmw_zenoh_cpp
+    source install/setup.bash
+    # build and source the other ROS packages
     colcon build
     source install/setup.bash
     ```
@@ -32,15 +37,15 @@
 4. Run the nodes to produce trace data:
 
     ```bash
+    ros2 run rmw_zenoh_cpp rmw_zenohd
     ros2 launch test_publisher test_publisher_launch.py
     ```
 
     Once the node is running, start recording a snapshot with:
 
     ```bash
-    ros2 trace record_snapshot trace
+    ros2 trace -s trace --dual-session
     # wait for a few messages being sent and received and stop tracing afterwards
-    ros2 trace stop trace
     ```
 
     Move recorded trace data into mounted folder:
