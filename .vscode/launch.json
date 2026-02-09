@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        
+            {
+                "name": "ROS2: Launch",
+                "type": "ros2",
+                "request": "launch",
+                "target": "/workspaces/src/test_publisher/launch/test_publisher_launch.py",
+                "arguments": [
+                    "trace_path:=/workspaces/src/traces"
+                ]
+            },
+            {
+                "name": "ROS2: Attach",
+                "type": "ros2",
+                "request": "attach"
+            },
+            {
+                "name": "ROS2: Launch File Debugging",
+                "type": "ros2",
+                "request": "debug_launch",
+                "target": "/workspaces/src/test_publisher/launch/test_publisher_launch.py"
+            },
+            {
+                "name": "Colcon Test",
+                "type": "debugpy",
+                "request": "launch",
+                "program": "/usr/bin/colcon",
+                "args": ["test"],
+                "cwd": "${workspaceFolder}/..",
+                "preLaunchTask": "source_ros2_ws",
+                "console": "integratedTerminal",
+                "justMyCode": false
+            }
+    ]
+}

@@ -11,12 +11,21 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "apt update && rosdep update && rosdep install -i --from-paths /workspaces/src -y",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ranch-hand-robotics.rde-pack",
+				"mhutchie.git-graph"
+			]
+		}
+	},
+
+	"containerEnv": { "RMW_IMPLEMENTATION": "rmw_zenoh_cpp" }
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
