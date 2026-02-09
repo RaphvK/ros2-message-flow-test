@@ -31,19 +31,23 @@
     source install/setup.bash
     # build and source the other ROS packages
     colcon build
-    source install/setup.bash
     ```
 
 4. Run the nodes to produce trace data:
 
     ```bash
+    # in a 2nd terminal
     ros2 run rmw_zenoh_cpp rmw_zenohd
+    # in the 1st terminal
+    source install/setup.bash
     ros2 launch test_publisher test_publisher_launch.py
     ```
 
     Once the node is running, start recording a snapshot with:
 
     ```bash
+    # in a 3rd terminal
+    source install/setup.bash
     ros2 trace -s trace --dual-session
     # wait for a few messages being sent and received and stop tracing afterwards
     ```
