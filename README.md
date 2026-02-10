@@ -22,21 +22,19 @@
     cd /workspaces
     rosdep install -i --from-paths src -y
 
-    # make sure to use the zenoh middleware implementation
+    # make sure to use the zenoh middleware implementation (except for building the packages)
     export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 
     # build the rmw_zenoh_cpp package first
     source /opt/ros/jazzy/setup.bash
-    colcon build --packages-up-to rmw_zenoh_cpp
-    source install/setup.bash
-    # build and source the other ROS packages
-    colcon build
+    RMW_IMPLEMENTATION=rmw_fastrtps_cpp colcon build
     ```
 
 4. Run the nodes to produce trace data:
 
     ```bash
     # in a 2nd terminal
+    source install/setup.bash
     ros2 run rmw_zenoh_cpp rmw_zenohd
     # in the 1st terminal
     source install/setup.bash
